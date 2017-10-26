@@ -3,6 +3,7 @@ Scripts & Data Files for Ted Kwartler's ODSC West 2017 Text Mining Workshop
 
 # Requirements
 - Sign up for an API key at ['newsapi.org'](www.newsapi.org)
+- [link to Google!](http://google.com)
 - Sign up for an API key at ['elasticemail.com'](www.elasticemail.com) 
 
 # Package Installations
