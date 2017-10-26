@@ -9,6 +9,7 @@ Scripts & Data Files for Ted Kwartler's ODSC West 2017 Text Mining Workshop
 - Sign up for an API key at [elasticemail.com](http://elasticemail.com) 
 
 # Package Installations
+*WARNING: This will take a lot of time to install!!*
 ```
 libs<-c('stringi', #1_Keyword_Scanning.R
         'tm', #2_Cleaning and Frequency Count.R
