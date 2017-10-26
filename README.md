@@ -1,10 +1,12 @@
-# ODSC
+# ODSC 
 Scripts & Data Files for Ted Kwartler's ODSC West 2017 Text Mining Workshop
+* Check out my book [*here*](http://amazon.com/Text-Mining-Practice-Ted-Kwartler/dp/1119282012)
+* Check out text mining courses at [*DataCamp*](http://datacamp.com)
+* Some of my blog posts can be found at [ODSC](https://opendatascience.com/category/blog/),[DataCamp](http://www.datacamp.com/community/blog) or my site [TedKwartler.com](http://tedkwartler.com)
 
-# Requirements
-- Sign up for an API key at ['newsapi.org'](www.newsapi.org)
-- [link to Google!](http://google.com)
-- Sign up for an API key at ['elasticemail.com'](www.elasticemail.com) 
+# Workshop Requirements
+- Sign up for an API key at [newsapi.org](http://newsapi.org)
+- Sign up for an API key at ['elasticemail.com'](http://elasticemail.com) 
 
 # Package Installations
 ```
@@ -32,12 +34,10 @@ libs<-c('stringi', #1_Keyword_Scanning.R
         'rmarkdown', #cronJob.R
         'httr')
 
-
 # Get most of the libs
 install.packages(libs, 
                  repos = "http://cran.r-project.org", 
                  dependencies = c("Depends", "Imports", "Suggests"))
-
 
 # WINDOWS Scheduler
 install.packages('taskscheduleR')
