@@ -20,10 +20,11 @@ libs<-c('stringi', #1_Keyword_Scanning.R
         'dendextend',
         'wordcloud', #4_Simple_Wordcloud.R & #5_Other_Wordclouds.R
         'RColorBrewer',
-        'treemap', #6_Topic_Modeling_Sentimentv3.R
+        'treemap', #6_Topic_Modeling_Sentiment.R
         'portfolio',
         'GuardianR',
         'lda', #previous ODSC workshops used library(topicmodels)
+        'LDAvis',
         'SnowballC',
         'openNLP', #7_Open_Langugage_Processingv3.R
         'jsonlite', #instruction_newsAPI.R
