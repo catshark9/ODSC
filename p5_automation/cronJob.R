@@ -14,8 +14,8 @@ library(httr)
 setwd('~/p5_automation')
 
 # Params
-apiKey<-'a73b9003-074c-4f49-a9d5-cc997db9f403'
-emails<-paste('ehk116@gmail.com','ehk1162003@yahoo.com', sep=', ')
+apiKey<-'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+emails<-paste('xxxxxx@gmail.com','xxxxxxxxxx@yahoo.com', sep=', ')
 
 #Time
 st<-Sys.time()
@@ -25,7 +25,7 @@ st<-Sys.time()
 options(stringsAsFactors = F)
 
 # www.newsapi.org Key
-newsKey<-'cbab843ba88347f0932bc44f294b8711'
+newsKey<-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 # Examine a single API endpoint
 url<-paste0('https://newsapi.org/v1/articles?source=techcrunch&apiKey=',newsKey)
