@@ -10,6 +10,7 @@ Scripts & Data Files for Ted Kwartler's ODSC West 2017 Text Mining Workshop
 
 # Package Installations
 *WARNING: This will take a lot of time to install!!*
+**It can take more than an hr to install, if some of the installs fail you will likely need to investigate each individual package installation for issues (e.g. rJava is needed for qdap)**
 ```
 libs<-c('stringi', #1_Keyword_Scanning.R
         'tm', #2_Cleaning and Frequency Count.R
