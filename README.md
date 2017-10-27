@@ -12,6 +12,7 @@ Scripts & Data Files for Ted Kwartler's ODSC West 2017 Text Mining Workshop
 *WARNING: This will take a lot of time to install!!*
 **It can take more than an hr to install, if some of the installs fail you will likely need to investigate each individual package installation for issues (e.g. rJava is needed for qdap)**
 ```
+# Get CRAN packages
 libs<-c('stringi', #1_Keyword_Scanning.R
         'tm', #2_Cleaning and Frequency Count.R
         'qdap', #3_Dendrogram.R
@@ -20,7 +21,8 @@ libs<-c('stringi', #1_Keyword_Scanning.R
         'dendextend',
         'wordcloud', #4_Simple_Wordcloud.R & #5_Other_Wordclouds.R
         'RColorBrewer',
-        'treemap', #6_Topic_Modeling_Sentiment.R
+        'tidytext', #6_TidyText_Sentiment.R
+        'treemap', #7_Topic_Modeling_Sentiment.R
         'portfolio',
         'GuardianR',
         'lda', #previous ODSC workshops used library(topicmodels)
@@ -28,7 +30,7 @@ libs<-c('stringi', #1_Keyword_Scanning.R
         'dplyr',
         'servr',
         'SnowballC',
-        'openNLP', #7_Open_Langugage_Processingv3.R
+        'openNLP', #8_Open_Langugage_Processingv3.R
         'jsonlite', #instruction_newsAPI.R
         'pbapply',
         'wordcloud2', #instruction_htmlWidgets.R
