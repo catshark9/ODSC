@@ -23,7 +23,7 @@ libs<-c('stringi', #1_Keyword_Scanning.R
         'treemap', #6_Topic_Modeling_Sentimentv3.R
         'portfolio',
         'GuardianR',
-        'topicmodels',
+        'lda', #previous ODSC workshops used library(topicmodels)
         'SnowballC',
         'openNLP', #7_Open_Langugage_Processingv3.R
         'jsonlite', #instruction_newsAPI.R
