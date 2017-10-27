@@ -14,7 +14,7 @@ library(pbapply)
 options(stringsAsFactors = F)
 
 # www.newsapi.org Key
-apiKey<-'cbab843ba88347f0932bc44f294b8711'
+apiKey<-'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 # Examine a single API endpoint
 url<-paste0('https://newsapi.org/v1/articles?source=techcrunch&apiKey=',apiKey) 
