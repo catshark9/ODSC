@@ -38,7 +38,7 @@ newsUrls<-vector()
 for (i in 1:length(newsSources$sources$id)){
   x<-paste0('https://newsapi.org/v1/articles?source=',
             newsSources$sources$id[i],
-            '&apiKey=',apiKey)
+            '&apiKey=',newsKey)
   naming<-newsSources$sources$name[i]
   newsUrls[naming]<-x
 }
