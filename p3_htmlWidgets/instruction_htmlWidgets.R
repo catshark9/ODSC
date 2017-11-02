@@ -107,6 +107,6 @@ s<-figure() %>%
 s
 
 # Save a widget with
-#saveWidget(s, file="scatter_chart.html")
+#htmlwidgets::saveWidget(s, file="scatter_chart.html")
 
 # End
