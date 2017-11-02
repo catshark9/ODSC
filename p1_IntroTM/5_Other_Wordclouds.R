@@ -89,8 +89,8 @@ drinkCorpus <- VCorpus(VectorSource(allDrinks))
 drinkTDM <- TermDocumentMatrix(drinkCorpus)
 drinkTDMm <- as.matrix(drinkTDM)
 
-# Label the new TDM, remember the order of subjects!
-colnames(drinkTDMm) = c("Chardonnay", "Coffee", "Beer")
+# Label the new TDM, remember the order of subjects from lines 80,81, and 82!
+colnames(drinkTDMm) = c("Beer", "Chardonnay", "Coffee")
 drinkTDMm[50:55,1:3]
 
 # Pallette
