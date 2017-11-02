@@ -98,10 +98,15 @@ scatterDF<-merge(avgLength,avgDiversity, all=T)
 scatterDF<-merge(scatterDF,numArticles, all=T)
 
 # Make scatter chart
-figure() %>%
+s<-figure() %>%
   ly_points(x=strCount, y=strUnique, data = scatterDF,
             hover = list(id,strCount, strUnique, text)) %>%
   x_axis(label='Total Word Count') %>%
-  y_axis(label='Word Diversity') 
+  y_axis(label='Word Diversity')
+
+s
+
+# Save a widget with
+#saveWidget(s, file="scatter_chart.html")
 
 # End
