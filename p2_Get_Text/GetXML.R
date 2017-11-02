@@ -11,6 +11,7 @@ library(xml2)
 library(stringr)
 
 # Chrome>Right-Click>Inspect>Network>"timedtext", right-click to open in new tab
+# This link expires ~10m after you get the url, so the below will fail, go get a new link!
 url<-'https://www.youtube.com/api/timedtext?key=yttt1&sparams=caps%2Cv%2Cexpire&expire=1509111926&v=34Na4j8AVgA&caps&hl=en_US&signature=733EEA3F50F7B0CA7AE01DE1CB53D0E26B12F3A6.EA855C62A273BF3E312AB5B7E8613E4C28189171&lang=en&fmt=srv3'
 
 # Read in the closed caption info
