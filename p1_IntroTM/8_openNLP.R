@@ -48,7 +48,7 @@ sentTokenAnnotator <- Maxent_Sent_Token_Annotator(language = "en")
 wordTokenAnnotator <- Maxent_Word_Token_Annotator(language = "en")
 posTagAnnotator <- Maxent_POS_Tag_Annotator(language = "en")
 
-# Annotate text
+# Annotate text; Need to declare NLP:: because annotate is used in ggplot2
 annotations <- NLP::annotate(textStr,
                         list(sentTokenAnnotator,
                              wordTokenAnnotator,posTagAnnotator,
