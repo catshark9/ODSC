@@ -49,7 +49,7 @@ wordTokenAnnotator <- Maxent_Word_Token_Annotator(language = "en")
 posTagAnnotator <- Maxent_POS_Tag_Annotator(language = "en")
 
 # Annotate text
-annotations <- annotate(textStr,
+annotations <- NLP::annotate(textStr,
                         list(sentTokenAnnotator,
                              wordTokenAnnotator,posTagAnnotator,
                              persons,locations,organizations))
