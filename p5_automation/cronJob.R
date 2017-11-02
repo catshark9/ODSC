@@ -65,7 +65,7 @@ write.csv(txt,'news.csv', row.names=F)
 
 ###
 
-# Render Markdown
+# Render Markdown; will save in working directory
 render("cronDash.Rmd")
 
 # Time
