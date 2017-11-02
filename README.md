@@ -42,9 +42,7 @@ libs<-c('stringi', #1_Keyword_Scanning.R
         'httr')
 
 # Get most of the libs
-install.packages(libs, 
-                 repos = "http://cran.r-project.org", 
-                 dependencies = c("Depends", "Imports", "Suggests"))
+install.packages(libs)
 
 # WINDOWS Scheduler
 install.packages('taskscheduleR')
