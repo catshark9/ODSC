@@ -72,7 +72,7 @@ organization<-entities(textAnnotations, kind = "organization")
 
 head(people)
 peopleTable<-table(as.factor(people))
-topPeeps<-people.table[peopleTable>5]
+topPeeps<-peopleTable[peopleTable>5]
 barplot(topPeeps)
 
 # End
