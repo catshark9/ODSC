@@ -3,11 +3,11 @@
 #' Author: Ted Kwartler
 #' email: ehk116@gmail.com
 #' License: GPL>=3
-#' Date: 2017-10-24
+#' Date: 2018-4-24
 #'
 
 # Set the working directory
-setwd("~/workshop_data")
+setwd("~/ODSC/workshop_data")
 
 # Libs
 library(qdap)
@@ -57,9 +57,10 @@ colLab <- function(n) {
 # Data 
 text<-read.csv('beer.csv', header=TRUE)
 
-# Keep the meta data, apply the functions to make a clean corpus
-customReader <- readTabular(mapping=list(content="text", id="id"))
-txtCorpus <- VCorpus(DataframeSource(text), readerControl=list(reader=customReader))
+# As of tm version 0.7-3 tabular was deprecated
+names(text)[1]<-'doc_id' #first 2 columns must be 'doc_id' & 'text'
+
+txtCorpus <- VCorpus(DataframeSource(text))
 txtCorpus<-cleanCorpus(txtCorpus)
 
 # Make TDM
