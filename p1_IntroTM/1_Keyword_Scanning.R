@@ -3,11 +3,11 @@
 #' Author: Ted Kwartler
 #' email: ehk116@gmail.com
 #' License: GPL>=3
-#' Date: 2017-10-24
+#' Date: 2018-4-24
 #'
 
 # Set the working directory
-setwd("~/workshop_data")
+setwd("~/ODSC/workshop_data")
 
 # Libs
 library(stringi)

@@ -3,11 +3,11 @@
 #' Author: Ted Kwartler
 #' email: ehk116@gmail.com
 #' License: GPL>=3
-#' Date: 2017-10-24
+#' Date: 2018-4-24
 #'
 
 # Set the working directory
-setwd("~/workshop_data")
+setwd("~/ODSC/workshop_data")
 
 # Libs
 library(tm)
@@ -43,21 +43,25 @@ customStopwords <- c(stopwords('english'), 'lol', 'smh')
 # Data
 text<-read.csv('coffee.csv', header=TRUE)
 
-# Keep the meta data, apply the functions to make a clean corpus
-customReader <- readTabular(mapping=list(content="text", id="id"))
-txtCorpus <- VCorpus(DataframeSource(text), readerControl=list(reader=customReader))
+# As of tm version 0.7-3 tabular was deprecated
+names(text)[1]<-'doc_id' #first 2 columns must be 'doc_id' & 'text'
+
+txtCorpus <- VCorpus(DataframeSource(text))
 txtCorpus<-cleanCorpus(txtCorpus)
 
-# Check Meta Data
+# Check Meta Data; brackets matter!!
 txtCorpus[[4]]
-txtCorpus[[4]][1]
-txtCorpus[[4]][2]
+meta(txtCorpus[[4]])
+meta(txtCorpus[4])
+
+content(txtCorpus[4])
+content(txtCorpus[[4]])
 
 # Need to plain text cleaned copy?
 df<-data.frame(text=unlist(sapply(txtCorpus, `[`, "content")), stringsAsFactors=F)
-write.csv(df,'plain_coffee.csv',row.names = F)
+#write.csv(df,'plain_coffee.csv',row.names = F)
 
-# Compare 
+# Compare a single tweet
 df[4,]
 text$text[4]
 
@@ -68,7 +72,7 @@ txtDtmM<-as.matrix(txtDtm)
 txtTdmM<-as.matrix(txtTdm)
 
 # Examine
-txtDtmM[362:365,2970:2981]
-txtTdmM[2970:2981,362:365]
+txtDtmM[610:611,2926:2930]
+txtTdmM[2926:2930,610:611]
 
 # End
