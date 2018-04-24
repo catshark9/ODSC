@@ -3,11 +3,11 @@
 #' Author: Ted Kwartler
 #' email: ehk116@gmail.com
 #' License: GPL>=3
-#' Date: 2017-10-24
+#' Date: 2018-4-24
 #' 
 
 # Set the working directory
-setwd("~/workshop_data")
+setwd("~/ODSC/workshop_data")
 
 # Libs
 library(tm)
@@ -43,15 +43,17 @@ cleanCorpus<-function(corpus){
 customStopwords <- c(stopwords('english'), 'lol', 'smh', 'chardonnay')
 
 #bigram token maker
-bigramTokens <-function(x)
+bigramTokens <-function(x){
   unlist(lapply(NLP::ngrams(words(x), 2), paste, collapse = " "), use.names = FALSE)
-
+}
+  
 # Data
 text<-read.csv('chardonnay.csv', header=TRUE)
 
-# Keep the meta data, apply the functions to make a clean corpus
-customReader <- readTabular(mapping=list(content="text", id="id"))
-txtCorpus <- VCorpus(DataframeSource(text), readerControl=list(reader=customReader))
+# As of tm version 0.7-3 tabular was deprecated
+names(text)[1]<-'doc_id' #first 2 columns must be 'doc_id' & 'text'
+
+txtCorpus <- VCorpus(DataframeSource(text))
 txtCorpus<-cleanCorpus(txtCorpus)
 
 # # Make bi-gram TDM
@@ -60,7 +62,7 @@ wineTDMm <- as.matrix(wineTDM)
 
 # See a bi-gram
 grep('wine country', rownames(wineTDMm))
-wineTDMm[4849:4850,870:871]
+wineTDMm[4739:4750,870:871]
 
 # Get Row Sums
 wineTDMv <- sort(rowSums(wineTDMm),decreasing=TRUE)
