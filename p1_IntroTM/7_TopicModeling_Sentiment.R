@@ -3,11 +3,11 @@
 #' Author: Ted Kwartler
 #' email: ehk116@gmail.com
 #' License: GPL>=3
-#' Date: 2017-10-24
+#' Date: 2018-4-24
 #'
 
 # Set the working directory
-setwd("~/workshop_data")
+setwd("~/ODSC/workshop_data")
 
 # Libs
 library(treemap)
@@ -74,6 +74,7 @@ customStopwords <- c(stopwords('english'), 'pakistan', 'gmt','pm')
 
 # Data
 text <- readRDS("Guardian_text.rds")
+text$body[1]
 
 # String clean up 
 body<-iconv(text$body, "latin1", "ASCII", sub="")
@@ -82,18 +83,15 @@ body<-bracketX(body, bracket="all") #remove strings in between parenteses
 body<-replace_abbreviation(body) # replaces a.m. to AM etc
 
 # Organized cleaned text
-textBody<-data.frame(id=text$id,text=body)
+textBody<-data.frame(doc_id=text$id,text=body)
 
-# Keep the meta data, apply the functions to make a clean corpus
-customReader <- readTabular(mapping=list(content="text", id="id"))
-txtCorpus <- VCorpus(DataframeSource(textBody), 
-                     readerControl=list(reader=customReader))
+txtCorpus <- VCorpus(DataframeSource(textBody))
 txtCorpus<-cleanCorpus(txtCorpus)
 
 # Extract plain text
 plainTxt<-unlist(sapply(txtCorpus, `[`, "content"))
 
-# Remove any blanks, happens sometimes w/tweets
+# Remove any blanks, happens sometimes w/tweets bc small length & stopwords
 txt<-pblapply(plainTxt,blankRemoval)
 
 # Lexicalize
