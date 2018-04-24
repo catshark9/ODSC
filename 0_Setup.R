@@ -42,6 +42,9 @@ libs<-c('stringi', #1_Keyword_Scanning.R
 # Get most of the libs
 install.packages(libs)
 
+# Problems with install qdap which requires rJava may be fixed with
+# https://github.com/hannarud/r-best-practices/wiki/Installing-RJava-(Ubuntu)
+
 
 # WINDOWS Scheduler
 install.packages('taskscheduleR')
