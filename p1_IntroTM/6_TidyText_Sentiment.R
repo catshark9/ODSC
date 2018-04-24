@@ -3,11 +3,11 @@
 #' Author: Ted Kwartler
 #' email: ehk116@gmail.com
 #' License: GPL>=3
-#' Date: 2017-10-24
+#' Date: 2018-4-24
 #'
 
 # Set the working directory
-setwd("~/workshop_data")
+setwd("~/ODSC/workshop_data")
 
 # Libs
 library(tidytext)
@@ -71,7 +71,7 @@ bingSent
 # Quick Analysis
 table(bingSent$sentiment)
 
-# Compare with Polarity
+# Compare with qdap::Polarity
 polarity(text)
 
 # Get afinn lexicon
