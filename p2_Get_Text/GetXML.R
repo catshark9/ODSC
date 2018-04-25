@@ -3,16 +3,19 @@
 #' Author: Ted Kwartler
 #' email: ehk116@gmail.com
 #' License: GPL>=3
-#' Date: 2017-10-27
+#' Date: 2018-4-24
 #' 
 
 # Libs
 library(xml2)
 library(stringr)
 
-# Chrome>Right-Click>Inspect>Network>"timedtext", right-click to open in new tab
-# This link expires ~10m after you get the url, so the below will fail, go get a new link!
-url<-'https://www.youtube.com/api/timedtext?key=yttt1&sparams=caps%2Cv%2Cexpire&expire=1509111926&v=34Na4j8AVgA&caps&hl=en_US&signature=733EEA3F50F7B0CA7AE01DE1CB53D0E26B12F3A6.EA855C62A273BF3E312AB5B7E8613E4C28189171&lang=en&fmt=srv3'
+# In Chrome, press f12 to open the developer tab. 
+# Reload the page with closed caption turned on.
+# In the dev tab search box type "timed" to get the caption info
+# Right-click and open in a new tab to view XML captions.
+# https://www.youtube.com/watch?v=34Na4j8AVgA
+url<-'https://www.youtube.com/api/timedtext?hl=en_US&caps&expire=1524688666&key=yttt1&signature=61C4AD107FCD8ECC5A43F36C39C055646E3DE65B.370C01BB7B737E1CFD861863C806BA992CB9ED45&sparams=caps%2Cv%2Cexpire&v=34Na4j8AVgA&lang=en&fmt=srv3'
 
 # Read in the closed caption info
 x<-read_xml(url)
@@ -23,6 +26,6 @@ text<-str_replace_all(text, "[\r\n]" , "")
 text<-iconv(text, "latin1", "ASCII", sub="")
 
 # Save
-writeLines(text,'~/workshop_data/Weeknd.txt')
+writeLines(text,'~/ODSC/workshop_data/Weeknd.txt')
 
 # End
