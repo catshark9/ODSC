@@ -33,11 +33,10 @@ clean.corpus<-function(corpus){
 }
 
 # Get text (only difference)
-txt<-read.csv('~/p5_automation/news.csv', stringsAsFactors = F)
+txt<-read.csv('~/ODSC/p5_automation/news.csv', stringsAsFactors = F)
 
 # Corpus Preprocessing & Organization
-customReader <- readTabular(mapping=list(content="text", id="id"))
-txtCorpus <- VCorpus(DataframeSource(txt), readerControl=list(reader=customReader))
+txtCorpus <- VCorpus(DataframeSource(txt))
 txtCorpus<-clean.corpus(txtCorpus)
 txtDTM<-DocumentTermMatrix(txtCorpus)
 
@@ -74,14 +73,13 @@ Column
 ### Top Ten Word Associations
 
 ```{r}
+dtmVec <- sort(colSums(txtM),decreasing=TRUE)
+wcDF <- data.frame(word = names(dtmVec),freq=dtmVec)
 topTerm<-as.character(wcDF[1,1])
-associations<-findAssocs(txtDTM, topTerm, 0.30)
-assocDF<-data.frame(term=names(associations[[1]]),value=unlist(associations))
-figure(height=350) %>%
-  ly_bar(x=term, y=value,data=assocDF ,hover = TRUE) %>%
-  x_axis(label='term') %>%
-  y_axis(label=paste(topTerm,'association value')) %>%
-  theme_axis("x", major_label_orientation = 90) 
+associations<-findAssocs(txtDTM, topTerm, 0.40)
+assocVec<-unlist(associations)
+names(assocVec)<-names(associations[[1]])
+barplot(assocVec, las=3) 
 ```
 
 ### Term Density by Source
@@ -90,12 +88,12 @@ figure(height=350) %>%
 topTerms<-as.character(wcDF[1:8,1])
 topTerms<- paste(topTerms, collapse='|')
 txt$top_term_density<-stri_count_regex(txt$text, pattern=topTerms)
-topDensity<-aggregate(top_term_density ~ id, txt, sum)
+topDensity<-aggregate(top_term_density ~ doc_id, txt, sum)
 topDensity<-topDensity[order(topDensity$top_term_density, decreasing=T),]
+colnames(topDensity)<-c('newsSource',topTerms)
 
-## Make radarchart
-tops<-subset(topDensity,topDensity$top_term_density>0)
-chartJSRadar(scores=tops, height=75,width=75)
+## Display some tabled data
+knitr::kable(topDensity[1:10,])
 ```
 
 Row 
@@ -106,25 +104,24 @@ Row
 ```{r diverstiy}
 # count avg word length in article description
 txt$strCount<-str_count(txt$text, pattern = ' ')
-avgLength<-aggregate(strCount ~ id, txt, mean)
+avgLength<-aggregate(strCount ~ doc_id, txt, mean)
 
 # Count unique words in article description 
 uniqueStr<-str_split(txt$text, pattern = " ")
 uniqueStr<-lapply(uniqueStr,unique)
 txt$strUnique<-unlist(lapply(uniqueStr,length))
-avgDiversity<-aggregate(strUnique ~ id, txt, mean)
+avgDiversity<-aggregate(strUnique ~ doc_id, txt, mean)
 
 # Count number of text records by source
-numArticles<-aggregate(text ~ id, txt, length)
+numArticles<-aggregate(text ~ doc_id, txt, length)
 
 # Merge accounts for missing
 scatterDF<-merge(avgLength,avgDiversity, all=T)
 scatterDF<-merge(scatterDF,numArticles, all=T)
 
-# Make scatter chart
-figure(width=1000) %>%
-  ly_points(x=strCount, y=strUnique, data = scatterDF,
-            hover = list(id,strCount, strUnique, text)) %>%
-  x_axis(label='Total Word Count') %>%
-  y_axis(label='Word Diversity') 
+# Make scatter plot
+plot(scatterDF$strCount,scatterDF$strUnique,
+     xlab="Total Word Count", ylab="Word Diversity")
+text(scatterDF$strCount, scatterDF$strUnique, scatterDF$doc_id, cex=0.6, pos=4, col="red")
+ 
 ```
