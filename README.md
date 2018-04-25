@@ -1,5 +1,5 @@
 # ODSC 
-Scripts & Data Files for Ted Kwartler's ODSC West 2017 Text Mining Workshop
+Scripts & Data Files for Ted Kwartler's ODSC 2018 Text Mining Workshop
 * Check out my book [*here*](http://amazon.com/Text-Mining-Practice-Ted-Kwartler/dp/1119282012)
 * Check out text mining courses at [*DataCamp*](http://datacamp.com)
 * Some of my blog posts can be found at [ODSC](https://opendatascience.com/category/blog/), [DataCamp](http://www.datacamp.com/community/blog) or my site [TedKwartler.com](http://tedkwartler.com)
